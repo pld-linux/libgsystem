@@ -76,35 +76,10 @@ Static libgsystem library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libgsystem.
 
-%package apidocs
-Summary:	GSystem API documentation
-Summary(pl.UTF-8):	Dokumentacja API biblioteki GSystem
-Group:		Documentation
-
-%description apidocs
-GSystem API documentation.
-
-%description apidocs -l pl.UTF-8
-Dokumentacja API biblioteki GSystem.
-
-%package -n dracut-libgsystem
-Summary:	GSystem support for Dracut
-Summary(pl.UTF-8):	Obsługa GSystem dla Dracuta
-Group:		Applications/System
-Requires:	%{name} = %{version}-%{release}
-Requires:	dracut
-
-%description -n dracut-libgsystem
-GSystem support for Dracut.
-
-%description -n dracut-libgsystem -l pl.UTF-8
-Obsługa GSystem dla Dracuta.
-
 %prep
 %setup -q
 
 %build
-# rebuild ac/am to get as-needed working
 %{__libtoolize}
 %{__gtkdocize}
 %{__aclocal} -I m4
