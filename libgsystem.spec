@@ -5,13 +5,16 @@
 Summary:	LibGSystem - GIO-based library for use by operating system components
 Summary(pl.UTF-8):	LibGSystem - biblioteka oparta na GIO przeznaczona dla komponentów systemu operacyjnego
 Name:		libgsystem
-Version:	2015.1
+Version:	2015.2
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgsystem/%{version}/%{name}-%{version}.tar.xz
 Source0:	https://github.com/GNOME/libgsystem/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	18a7d86218deafd2d78d3d1e74da6cfc
+# Source0-md5:	8dcdd946b98c31809efdb13a9fcbc8dc
+# official https://git.gnome.org/browse/libglnx
+Source1:	https://github.com/GNOME/libglnx/archive/e72bbdebb03f5d39c7f32869299ca4284786344c/libglnx.tar.gz
+# Source1-md5:	17eeda8396e2129b81077d96b5daeb67
 URL:		https://wiki.gnome.org/Projects/LibGSystem
 BuildRequires:	attr-devel
 BuildRequires:	autoconf >= 2.63
@@ -78,7 +81,9 @@ Static libgsystem library.
 Statyczna biblioteka libgsystem.
 
 %prep
-%setup -q
+%setup -q -a1
+rmdir libglnx
+%{__mv} libglnx-* libglnx
 
 %build
 %{__libtoolize}
